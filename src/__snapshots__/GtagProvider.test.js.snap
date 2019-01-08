@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GtagProvider tests Create GtagProvider for Google Analytics 1`] = `
+<h1>
+  mock render Google Analytics script to page
+</h1>
+`;
+
+exports[`GtagProvider tests Create GtagProvider for Google Tag Manager 1`] = `
+<h1>
+  mock render Google Tag Manager script to page
+</h1>
+`;

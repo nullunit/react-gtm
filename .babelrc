@@ -1,0 +1,7 @@
+{
+  "ignore": [
+    "__mocks__",
+    "__snapshots__",
+    "**/*.test.js"
+  ]
+}

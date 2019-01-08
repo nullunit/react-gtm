@@ -1,0 +1,39 @@
+git:
+  depth: false
+
+language: node_js
+node_js:
+- '10'
+
+cache: npm
+script: npm run package
+
+notifications:
+  email: false
+  slack:
+    secure: R0xsqqnpAMg2FHucGwBmdpbhv7ziCmpfLfSngOfLg157PLHlmF1AYML3lZBEfj6Ho4mleL/i0RSAsKjxGVjk6bZ9FS5ATM13zYu05+d8wWdaT/wihfYucF+TFdVjHm0+34WesPtZlHTANOuVh/NCACubT1Ku5ldW7TlwuBNCvzT5A47/T2+geJLS3PrmyOZl/QY18+weTWfki5CKZMwUl16vRC3ADBYLHmDJe3NhT24wNh1BXM9SvMD+9/hny+TwKpBLrvHofubAIAkBmqS+6BkzpnoNegoEEdytWlRBT5c5fDMk5+sirBKFw3Cb/3lVmrkDHuf6mLxZAO833VN0MC/E/3QG0W8sw9EdNjiLTUKE6Af7Q3cp8tvaBhH6HBcZH/SV/17I0FL9/+hFkcx/2H8lp/x1hivDsDe48foeJTM/iC1xlHxc/Ig6fj5MpxzpVphDHZ4uzuVfsME6leNM0k/OC+98HvqHeCnS5JBmlw8YAjUh72k8B6SFkDkusQuDWXntdFSANXaUfvLkNZv9bYvFQ481McZYD0LJTfAY6os+p6ACWngWWIJ+mg4IQYerhT61LAYXxexXoB6oQ+G7xJlbPfYvA0tRw+JjVf+SfWqLTc5SGdz5kIizu1hexzDqGR9TW9C0xCkHmfaBPts0/pPfhshO3Kgxkg9g2Hlv9eo=
+
+branches:
+  only:
+  - master
+  - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+
+deploy:
+
+  - provider: npm
+    email: justin@nullunit.co
+    api_key:
+      secure: XpBfXGUejiJN79i8svqJUYHDootljINtkbZsyEemg72qqYUhum59tkzbyw3P6vgjqgNuc4dstW23nkUhwotS2s1yX3jH/gkWH8BjHipPnONh4oyxLGUFB0dWX0sPk65beiQpYTjdBgKfnBTaA1LRXcsBt31339bat9LrDwyIt0/nEWjs+/lj3gSdXqX43ASRv2EC5Zv/0FZrQfbGjv8O9pD8C3LIkABITRBB8iI75MWtoAtJ+gjnClD8MZPrOJllYktDk5/YS26m9SRIZNgI4Ul3DOcP6Lm6kmEaxkQYkneKBpdwN10NMMk4TEuJqTR9Pd3pINjraxch5YIaLoAyDwQCHBx5uLYh0J9wKy58fKUTr5lGmvgA3zM3kUTA3Eois8WNeqgQV/2ZO/8kkCwaXm9IKwLxtSofaTzYnCRlOk0LwelDRxJ1w4OPh/rCta0PLbgxG8nxQzQsKXMdcSfMvm/472Cmz6pQisEgmWBtbffrvsgNn8DGtlg0dg6BqDpagc2cKWf2b60w673O8b0w0SqgO3Oov1gM4+OWCMdK5MFsKcmb61Nbbm5SSHTMEOgT0bXKL2G7OAodtAQyMxHTuG+KnvOtKuEoDfjSAfNn65wbIGvC8rdpAt8PH8bU2Tk6Jb3aFMPF/b2sce1l8/zyepZiCCUs61lMdk0FMg/mzww=
+    skip_cleanup: true
+    on:
+      branch: master
+
+  - provider: releases
+    api_key:
+        secure: yU3M4JeVyuVzg3w5NOKCIHO6tboQg0VLTRiWaJslsVeCO3jbhmUEF1wp1E4Quwjp83vpKkJa5oQT11iq3lFfaAQ+iMcL1KWdkfLt/E28ieSb+wMQBdFVMpNK1j4ZX60F8UENxBlbV3E6azUp5MYnCRF6h4ueeeHyGSoR6baCel8nty0ryb96xRs/LxMfBE43oKe2blvnoca4E7e5H0HgcUUnCUxvckWa/EGZ+eDX03nWkTdt8L8TCU6sOGNNPfDVWIsV2Gdd31OPr3A7L71q+ZK0/ijbuCngVZU90W4+AWGxb46ivxSDJnj0o1cmrA4ylbA5LCzVEtVRCMhYguU23zbHPG7DKNKuY0v/KMDPhxjnDOXdeWnCB2JclSjlPe20WwCpfa2KSb5FurrJLqxd9KqjELNw8/WUwn5OjokcGKLZrCyyK1SvHYgHpUfwCdkVNBKCubqKLYmSHaa1veRK6UbQiVI2Z9hpG9vTMsHFkplZa4b5ax0bTYcnXaChba6NWOa1p2cac9dIBhXAC5j2g5RNx6P+5tqONGPoKLHGFzfj/wbm8ZdOUZxpAkidOFaArknS+JK6jUrMpjai2nv6ZGnbaZ2G8uoA/Mput/HPRn4NwEX1I9eS032zgG+3heHWtycF0UUGv9IYYBxGHPp2DCZIfG4Nj1/j5qzidonLL5E=
+    file_glob: true
+    file: nullunit-react-gtm-*.tgz
+    skip_cleanup: true
+    draft: true
+    on:
+      tags: true
