@@ -3,6 +3,7 @@ import ArgumentError from './ArgumentError';
 /**
  * {@link GtagContext} global site tag context singleton.
  * @type {GtagContext}
+ * @ignore
  */
 let GTAG_CONTEXT = null;
 
@@ -10,9 +11,19 @@ let GTAG_CONTEXT = null;
  * The Google global site tag context, allowing access to push events
  * to <a href="https://support.google.com/analytics/answer/1008015?hl=en">Google Analytics</a>
  * and/or <a href="https://support.google.com/tagmanager/answer/6102821?hl=en">Google Tag manager</a>.
+ *
+ * @class GtagContext
+ * @author Justin Smith <justin@nullunit.co>
  */
 export default class GtagContext {
 
+    /**
+     * Create a new {@link GtagContext} with the specified window and GTM/UA id.
+     *
+     * @constructs GtagContext
+     * @param window The javascript {@code window} object.
+     * @param id The Google Tag Manager or Universal Analytics ID.
+     */
     constructor(window, id) {
 
         if (window == null) {
@@ -33,10 +44,22 @@ export default class GtagContext {
         this._window.dataLayer = this._dataLayer;
     }
 
+    /**
+     * The underlying data layer array.
+     * @member {Array} dataLayer
+     * @memberof GtagContext
+     * @returns {*|Array}
+     */
     get dataLayer() {
         return this._dataLayer;
     }
 
+    /**
+     * The Google Tag Manager or Universal Analytics ID.
+     * @member {String} id
+     * @memberof GtagContext
+     * @returns {*}
+     */
     get id() {
         return this._id;
     }
@@ -121,6 +144,7 @@ export default class GtagContext {
 
 /**
  * Get or create the Google {@link GtagContext}
+ * @function
  * @param {Window} window Required for first call to this function, the javascript window object.
  * @param {String} id Required for first call to this function, the Google Analytics or Tag Manager ID.
  * @returns {GtagContext} Returns the Google Tag Manager context.

@@ -2,6 +2,7 @@ import React from 'react';
 
 /**
  * Mock skips adding Google Analytics script to page as well as rendering child components.
+ * @ignore
  */
 export default class GtagScript extends React.Component {
 

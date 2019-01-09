@@ -4,6 +4,28 @@ import GtagScript from './GtagScript';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+/**
+ * The Google Tag Manager provider React component.
+ *
+ * @class GtagProvider
+ * @author Justin Smith <justin@nullunit.co>
+ * @example
+ * const GTM_ID = 'GTM-12345';
+ * const MY_APP_NAME = 'My great app'; //Optional
+ * const MY_APP_VERSION = '3.1.2'; //Optional
+ *
+ * ...
+ *
+ * <GtagProvider id={ GTM_ID } appName={ MY_APP_NAME } appVersion={ MY_APP_VERSION } useTagManager={ true }>
+ *     <BrowserRouter>
+ *         <App />
+ *     </BrowserRouter>
+ * </GtagProvider>
+ *
+ *
+ *
+ *
+ */
 export default class GtagProvider extends React.Component {
 
     static defaultProps = {
