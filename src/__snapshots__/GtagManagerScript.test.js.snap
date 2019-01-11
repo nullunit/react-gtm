@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GtagManagerScript tests Append Google Tag Manager script to load Google Analytics 1`] = `
+<h1>
+  mock child
+</h1>
+`;

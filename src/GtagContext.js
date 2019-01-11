@@ -16,11 +16,11 @@ export default class GtagContext {
     constructor(window, id) {
 
         if (window == null) {
-            throw new ArgumentError("GtagContext could not be created, required parameter 'window' cannot be null");
+            throw new ArgumentError('GtagContext could not be created, required parameter \'window\' cannot be null');
         }
 
         if (id == null) {
-            throw new ArgumentError("GtagContext could not be created, required parameter 'id' cannot be null");
+            throw new ArgumentError('GtagContext could not be created, required parameter \'id\' cannot be null');
         }
 
         this._window = window;
@@ -42,7 +42,7 @@ export default class GtagContext {
     }
 
     get appName() {
-        return this._appName;    
+        return this._appName;
     }
 
     set appName(value) {
@@ -58,7 +58,7 @@ export default class GtagContext {
     get appVersion() {
         return this._appVersion;
     }
-    
+
     set appVersion(value) {
 
         if (this._appVersion === value) {
@@ -68,14 +68,14 @@ export default class GtagContext {
         this._appVersion = value;
         this.push({ 'appVersion': value });
     }
-    
+
     get clientId() {
         return this._clientId;
     }
 
     set clientId(value) {
 
-        if (this._clientId === value) { 
+        if (this._clientId === value) {
             return;
         }
 
@@ -89,12 +89,12 @@ export default class GtagContext {
 
     set userId(value) {
 
-        if (this._userId === value) {  
+        if (this._userId === value) {
             return;
         }
 
         this._userId = value;
-        this.push({ userId: value });
+        this.push({ 'userId': value });
     }
 
     gtag() {
@@ -116,13 +116,14 @@ export default class GtagContext {
 
         return `Gtag{ ${id}userId:${userId}, clientId:${clientId} }`;
     }
+
 }
 
 /**
  * Get or create the Google {@link GtagContext}
- * @param window Required for first call to this function, the javascript window object.
- * @param id Required for first call to this function, the Google Analytics or Tag Manager ID.
- * @returns {GtagContext}
+ * @param {Window} window Required for first call to this function, the javascript window object.
+ * @param {String} id Required for first call to this function, the Google Analytics or Tag Manager ID.
+ * @returns {GtagContext} Returns the Google Tag Manager context.
  */
 export const getGtagContext = (...args) => {
 
