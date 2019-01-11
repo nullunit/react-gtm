@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION="$(node scripts/version.js $(git describe --long --tags))"
+VERSION="$(scripts/version.sh $(git describe --long --tags))"
 
 echo "Updating package.json"
 
