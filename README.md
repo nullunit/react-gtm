@@ -2,6 +2,8 @@ Google Tag Manager and Universal Analytics for React
 ==================================
 
 [![Build Status](https://api.travis-ci.org/nullunit/react-gtm.svg?branch=master)](https://travis-ci.org/nullunit/react-gtm)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c7b29e60c5bc073b5be0/maintainability)](https://codeclimate.com/github/nullunit/react-gtm/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c7b29e60c5bc073b5be0/test_coverage)](https://codeclimate.com/github/nullunit/react-gtm/test_coverage)
 
 Thin wrapper and React component for including Google Tag Manager or Universal Analytics in a React project.
 
