@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { withGtag, getGtagContext } from './index';
+import { getGtagContext, withGtag } from './index';
 
 const GTM_ID = 'GTM-123456';
 
@@ -15,15 +15,19 @@ describe('withGtag tests', () => {
         let componentProps = null;
         const GtaggedComponent = withGtag(class extends React.Component {
 
+            static displayName = 'TestComponent';
+
             constructor(props) {
                 super(props);
                 componentProps = props;
             }
 
             render() {
-                return (<h1>hi</h1>);
+                return <h1>hi</h1>;
             }
+
         });
+
         renderer.create(<GtaggedComponent />);
 
         expect(componentProps.gtag).toBe(context);

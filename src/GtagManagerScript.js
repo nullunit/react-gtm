@@ -1,35 +1,35 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import GtagContext from './GtagContext';
+import React from 'react';
 
 export default class GtagManagerScript extends React.Component {
 
-    static defaultProps = {
-        id: null,
-        context: null
-    };
-
     static propTypes = {
-        id: PropTypes.string.isRequired,
-        context: PropTypes.instanceOf(GtagContext).isRequired,
-        children: PropTypes.node.isRequired
+        'children': PropTypes.node.isRequired,
+        'id': PropTypes.string.isRequired
     };
 
     componentDidMount() {
 
+        const { id } = this.props;
+
         //place the tag manager script in the page
+        //(taken from Google Tag Manager console)
         (
-            function(w,d,s,l,i){
-                w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-                var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-                j.async=true;
-                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-                f.parentNode.insertBefore(j,f);
-            }
-        )(window,document,'script','dataLayer',this.props.id);
+            function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({ 'gtm.start': new Date().getTime(), 'event': 'gtm.js' });
+                const [ f ] = d.getElementsByTagName(s);
+                const j = d.createElement(s);
+                const dl = l === 'dataLayer' ? '' : `&l=${l}`;
+                j.async = true;
+                j.src = `https://www.googletagmanager.com/gtm.js?id=${i}${dl}`;
+                f.parentNode.insertBefore(j, f);
+            }(window, document, 'script', 'dataLayer', id));
     }
 
     render() {
-        return React.Children.only(this.props.children);    
+        const { children } = this.props;
+        return React.Children.only(children);
     }
+
 }

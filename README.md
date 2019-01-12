@@ -1,7 +1,18 @@
 Google Tag Manager and Universal Analytics for React
 ==================================
 
+[![NPM Current Version](https://img.shields.io/npm/v/@nullunit/react-gtm.svg)](https://www.npmjs.com/package/@nullunit/react-gtm)
+[![License](https://img.shields.io/github/license/nullunit/react-gtm.svg)](https://github.com/nullunit/react-gtm/blob/master/LICENSE)
+[![NPM Library Size](https://img.shields.io/bundlephobia/minzip/@nullunit/react-gtm.svg)](https://www.npmjs.com/package/@nullunit/react-gtm)
+
+[![NPM Downloads](https://img.shields.io/npm/dependency-version/@nullunit/react-gtm/peer/react.svg)](https://www.npmjs.com/package/react)
+[![NPM Downloads](https://img.shields.io/npm/dependency-version/@nullunit/react-gtm/peer/prop-types.svg)](https://www.npmjs.com/package/prop-types)
+
 [![Build Status](https://api.travis-ci.org/nullunit/react-gtm.svg?branch=master)](https://travis-ci.org/nullunit/react-gtm)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c7b29e60c5bc073b5be0/maintainability)](https://codeclimate.com/github/nullunit/react-gtm/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c7b29e60c5bc073b5be0/test_coverage)](https://codeclimate.com/github/nullunit/react-gtm/test_coverage)
+[![Issues](https://img.shields.io/codeclimate/issues/nullunit/react-gtm.svg)](https://codeclimate.com/github/nullunit/react-gtm/issues)
+[![Technical Debt](https://img.shields.io/codeclimate/tech-debt/nullunit/react-gtm.svg)](https://codeclimate.com/github/nullunit/react-gtm/trends/technical_debt)
 
 Thin wrapper and React component for including Google Tag Manager or Universal Analytics in a React project.
 

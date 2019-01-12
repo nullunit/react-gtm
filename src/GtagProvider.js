@@ -1,24 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import GtagScript from './GtagScript';
-import GtagManagerScript from './GtagManagerScript';
 import { getGtagContext } from './GtagContext';
+import GtagManagerScript from './GtagManagerScript';
+import GtagScript from './GtagScript';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 export default class GtagProvider extends React.Component {
 
     static defaultProps = {
-        id: null,
-        useTagManager: false,
-        appName: null,
-        appVersion: null
+        'appName': null,
+        'appVersion': null,
+        'useTagManager': false
     };
 
     static propTypes = {
-        id: PropTypes.string.isRequired,
-        useTagManager: PropTypes.bool,
-        appName: PropTypes.string,
-        appVersion: PropTypes.string,
-        children: PropTypes.node.isRequired
+        'appName': PropTypes.string,
+        'appVersion': PropTypes.string,
+        'children': PropTypes.node.isRequired,
+        'id': PropTypes.string.isRequired,
+        'useTagManager': PropTypes.bool
     };
 
     constructor(props) {
@@ -31,20 +30,39 @@ export default class GtagProvider extends React.Component {
     }
 
     _renderChild(context) {
-        const child = React.Children.only(this.props.children);
-        return React.cloneElement(child, { gtag: context }); 
+        const { children } = this.props;
+        const child = React.Children.only(children);
+        return React.cloneElement(child, { 'gtag': context });
     }
-    
-    render() {                                   
-        const context = getGtagContext(window, this.props.id);
-        context.appName = this.props.appName;
-        context.appVersion = this.props.appVersion;
-                                                                        
-        if (this.props.useTagManager) { 
-            return (<GtagManagerScript id={ this.props.id } context={ context }>{ this._renderChild(context) }</GtagManagerScript>);
-        }
-        else {                    
-            return (<GtagScript id={ this.props.id } context={ context }>{ this._renderChild(context) }</GtagScript>);
-        }
+
+    _renderTagManagerScript(id, context) {
+        return (
+            <GtagManagerScript context={ context } id={ id }>
+                { this._renderChild(context) }
+            </GtagManagerScript>
+        );
     }
+
+    _renderGtagScript(id, context) {
+        return (
+            <GtagScript context={ context } id={ id }>
+                { this._renderChild(context) }
+            </GtagScript>
+        );
+    }
+
+    render() {
+
+        const { id, appName, appVersion, useTagManager } = this.props;
+        const context = getGtagContext(window, id);
+        context.appName = appName;
+        context.appVersion = appVersion;
+
+        if (useTagManager) {
+            return this._renderTagManagerScript(id, context);
+        }
+
+        return this._renderGtagScript(id, context);
+    }
+
 }

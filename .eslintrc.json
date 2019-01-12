@@ -1,0 +1,143 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "globals": {
+    "window": false,
+    "document": false,
+    "test": false,
+    "it": false,
+    "describe": false,
+    "expect": false
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+    "eslint:all",
+    "plugin:react/all"
+  ],
+  "settings": {
+    "react": {
+      "pragma": "React",  // Pragma to use, default to "React"
+      "version": "detect" // React version. "detect" automatically picks the version you have installed.
+    },
+    "propWrapperFunctions": [
+      // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
+      "forbidExtraProps",
+      {"property": "freeze", "object": "Object"},
+      {"property": "myFavoriteWrapper"}
+    ]
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+
+    //react
+    "react/prefer-stateless-function": "off",
+    "react/jsx-curly-spacing": ["error", {"when": "always"}],
+    "react/jsx-max-props-per-line": ["error", { "when": "multiline" }],
+    "react/jsx-one-expression-per-line": ["error", { "allow": "single-child" }],
+    "react/jsx-no-literals": "off",
+    "react/require-optimization": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+
+    "func-names": "off",
+    "prefer-rest-params": "off",
+    "sort-keys": "off",
+    "max-params": ["error", { "max": 5 }],
+    "max-len": ["error", { "code": 180 }],
+    "max-lines-per-function": "off",
+    "max-statements": ["error", 40],
+    "class-methods-use-this": "off",
+    "id-length": "off",
+    "spaced-comment": ["error", "never"],
+    "capitalized-comments": "off",
+    "multiline-comment-style": ["error", "separate-lines"],
+    "padded-blocks": ["error", {
+      "classes": "always",
+      "switches": "always"
+    }],
+    "no-underscore-dangle": "off",
+    "no-magic-numbers": ["error", { "enforceConst": true, "ignore": [0, 1, 2] }],
+    "no-eq-null": "off",
+    "dot-location": ["error", "property"],
+    "array-element-newline": ["error", "consistent"],
+    "array-bracket-spacing": ["error", "always", { "objectsInArrays": false, "arraysInArrays": false }],
+    "object-property-newline": ["error", { "allowAllPropertiesOnSameLine": true }],
+    "no-ternary": "off",
+    "multiline-ternary": ["error", "always-multiline"],
+
+    //node
+    "no-sync": "error",
+
+    //es6
+    "no-var": "error",
+    "constructor-super": "error",
+    "arrow-parens": ["error", "always"],
+    "arrow-spacing": ["error", {
+      "before": true,
+      "after": true
+    }],
+    "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }],
+    "no-duplicate-imports": "error",
+    "no-useless-constructor": "error",
+    "template-curly-spacing": ["error", "never"],
+    "prefer-template": "error",
+    "prefer-destructuring": "error",
+    "prefer-const": "error",
+    "prefer-arrow-callback": "error",
+    "object-shorthand": ["error", "always"],
+    "object-curly-spacing": ["error", "always"],
+    "sort-imports": ["error", {
+      "ignoreCase": true,
+      "ignoreMemberSort": false,
+      "memberSyntaxSortOrder": ["none", "all", "single", "multiple"]
+    }],
+
+    "eqeqeq": ["error", "always", {"null": "ignore"}],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next" }],
+
+    //style
+    "block-spacing": "error",
+    "comma-spacing": ["error", { "after": true }],
+    "comma-dangle": ["error", "never"],
+    "curly": "error",
+    "brace-style": ["error", "stroustrup"],
+    "func-call-spacing": ["error", "never"],
+    "no-tabs": "error",
+    "one-var": ["error", "never"],
+    "space-before-function-paren": ["error", {
+      "anonymous": "never",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
+    "space-before-blocks": "error",
+    "space-in-parens": ["error", "never"],
+    "indent": [
+      "error",
+      4,
+      { "SwitchCase": 1 }
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ]
+  }
+}

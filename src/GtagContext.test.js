@@ -81,7 +81,7 @@ describe('GtagContext tests', () => {
         expect(context.userId).toBeNull();
         expect(context.clientId).toEqual(clientId);
 
-        expect(w.dataLayer).toEqual([{ "client_id": clientId }]);
+        expect(w.dataLayer).toEqual([{ 'client_id': clientId }]);
         expect(context.dataLayer).toEqual(w.dataLayer);
 
         expect(context.toString()).toEqual(`Gtag{ ${GTM_ID} userId:<null>, clientId:'${clientId}' }`);
@@ -92,7 +92,7 @@ describe('GtagContext tests', () => {
         context.clientId = clientId;
         context.clientId = clientId;
 
-        expect(w.dataLayer).toEqual([{ "client_id": clientId }]);
+        expect(w.dataLayer).toEqual([{ 'client_id': clientId }]);
         expect(context.dataLayer).toEqual(w.dataLayer);
 
         //now set it to something new
@@ -100,7 +100,7 @@ describe('GtagContext tests', () => {
         context.clientId = newClientId;
 
         expect(context.clientId).toEqual(newClientId);
-        expect(w.dataLayer).toEqual([{ "client_id": clientId }, { "client_id": newClientId }]);
+        expect(w.dataLayer).toEqual([{ 'client_id': clientId }, { 'client_id': newClientId }]);
         expect(context.dataLayer).toEqual(w.dataLayer);
 
         expect(context.toString()).toEqual(`Gtag{ ${GTM_ID} userId:<null>, clientId:'${newClientId}' }`);
@@ -140,7 +140,7 @@ describe('GtagContext tests', () => {
         context.appName = newAppName;
 
         expect(context.appName).toEqual(newAppName);
-        expect(w.dataLayer).toEqual([{ appName }, { "appName": newAppName }]);
+        expect(w.dataLayer).toEqual([{ appName }, { 'appName': newAppName }]);
         expect(context.dataLayer).toEqual(w.dataLayer);
     });
 
@@ -178,7 +178,7 @@ describe('GtagContext tests', () => {
         context.appVersion = newAppVersion;
 
         expect(context.appVersion).toEqual(newAppVersion);
-        expect(w.dataLayer).toEqual([{ appVersion }, { "appVersion": newAppVersion }]);
+        expect(w.dataLayer).toEqual([{ appVersion }, { 'appVersion': newAppVersion }]);
         expect(context.dataLayer).toEqual(w.dataLayer);
     });
 
@@ -196,8 +196,8 @@ describe('GtagContext tests', () => {
         const w = {};
         const eventName = 'MyEvent';
         const params = {
-            'param1': 'param1 value',
             'param 2': 2,
+            'param1': 'param1 value',
             'param3': true
         };
         const context = new GtagContext(w, GTM_ID);
@@ -216,11 +216,10 @@ describe('GtagContext tests', () => {
         context.gtag('config', id);
 
         expect(w.dataLayer.length).toBe(2);
-        const js = w.dataLayer[0];
+        const [ js, config ] = w.dataLayer;
         expect(js[0]).toEqual('js');
         expect(js[1]).toEqual(date);
 
-        const config = w.dataLayer[1];
         expect(config[0]).toEqual('config');
         expect(config[1]).toEqual(id);
 
